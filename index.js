@@ -82,7 +82,7 @@ app.get('/login',(req,res)=>{
                         bcrypt.compare(req.body.pass,rows[0]['h_pass'],(e,result)=>{
                             if(result==true){
                                 connection.query(`update user_data set login=true where user_name = '${req.body.user}';`)
-                                res.send(`User Logged In\nname:${rows[0]['name']}\nusername:${rows[0]['userid']},email:${rows[0]['email']}`);
+                                res.send(`User Logged In\nname:${rows[0]['name']}\nusername:${rows[0]['user_name']}\nemail:${rows[0]['email']}`);
                             }
                             else{
                                 res.send('Wrong Password');
