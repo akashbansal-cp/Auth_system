@@ -9,7 +9,7 @@ Content-Type: application/json
 {
     "name":"akashbansal",
     "email":"a@gma.com",
-    "user":"22_sdd",
+    "user":"22sdd",
     "pass":"Password"
 }
 
@@ -21,8 +21,8 @@ GET http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "user":"Akash",
-    "pass":"Password"
+    "user":"22sdd",
+    "pass":"Pakkssword"
 }
 
 
@@ -33,7 +33,7 @@ GET http://localhost:5000/logout
 Content-Type: application/json
 
 {
-    "user":"Akassh"
+    "user":"22sdd"
 }
 
 
@@ -48,6 +48,6 @@ GET http://localhost:5000/delete
 Content-Type: application/json
 
 {
-    "user":"Akash",
+    "user":"22sdd",
     "pass":"Password"
 }

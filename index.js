@@ -4,7 +4,6 @@ const express = require("express")
 const mysql = require('mysql')
 const {Validator}=require('node-input-validator')
 
-
 app = express()
 app.use(express.json());
 
@@ -16,6 +15,7 @@ var connection = mysql.createConnection({
     password:'password',
     database:'auth_data',
 });
+
 connection.connect((err)=>{
     if(!err){
         console.log('Connected');
@@ -30,7 +30,6 @@ app.get('/',(req,res)=>{
     res.send("Welcome to the Authentication system")
 })
 
-
 app.post('/sign_up',(req,res)=>{
     const sign_up_validator = new Validator(req.body,{
         email:'required|email',
@@ -42,7 +41,7 @@ app.post('/sign_up',(req,res)=>{
         if(matched){
             bcrypt.hash(req.body.pass,req_sal,(e,hash)=>{
                 if(!e){
-                    connection.query(`INSERT INTO user_data (user_name,h_pass,login) VALUES ('${req.body.user}','${hash}',false);`,(err,row,files)=>{
+                    connection.query(`INSERT INTO user_data (user_name,h_pass,login,name,email) VALUES ('${req.body.user}','${hash}',false,'${req.body.name}','${req.body.email}');`,(err,row,files)=>{
                         if(!err){
                             res.send('User has been successfully Created');
                         }
@@ -83,7 +82,7 @@ app.get('/login',(req,res)=>{
                         bcrypt.compare(req.body.pass,rows[0]['h_pass'],(e,result)=>{
                             if(result==true){
                                 connection.query(`update user_data set login=true where user_name = '${req.body.user}';`)
-                                res.send('User Logged In');
+                                res.send(`User Logged In\nname:${rows[0]['name']}\nusername:${rows[0]['userid']},email:${rows[0]['email']}`);
                             }
                             else{
                                 res.send('Wrong Password');
@@ -148,12 +147,11 @@ app.get('/users',(req,res)=>{
 
 app.get('/delete',(req,res)=>{
     const delete_validator = new Validator(req.body,{
-        user:'required|minLength:5|maxLength:35|alpheNumeric',
+        user:'required|minLength:5|maxLength:35|alphaNumeric',
         pass:'required|minLength:5'
     })
     delete_validator.check().then((matched)=>{
         if(matched){
-
             connection.query(`select * from user_data where user_name = '${req.body.user}';`,(err,rows,files)=>{
                 if(!err){
                     if(rows.length==1){
@@ -182,4 +180,5 @@ app.get('/delete',(req,res)=>{
         }
     })
 })
+
 app.listen(5000)

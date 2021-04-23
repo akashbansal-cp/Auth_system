@@ -1,4 +1,4 @@
 create database auth_data;
 use auth_data;
-create table user_data(userid int unique not null auto_increment, user_name varchar(20) primary key not null, h_pass varchar(100),login bool);
+create table user_data(userid int unique not null auto_increment, user_name varchar(20) primary key not null, name varchar(35), email varchar(100), h_pass varchar(100),login bool);
 desc user_data;
