@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt')
-const e = require('express')
 const req_sal=10
 const express = require("express")
 const mysql = require('mysql')
