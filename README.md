@@ -13,4 +13,4 @@ Features
 Protection
     -Password has been hashed
     -OTP system has to be implemented
-    
+    -Input has been Validated

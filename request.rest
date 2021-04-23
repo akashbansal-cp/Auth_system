@@ -1,31 +1,53 @@
 GET http://localhost:5000/
 
-###
 
+
+###
 POST http://localhost:5000/sign_up
 Content-Type: application/json
 
 {
-    "user":"u5",
+    "name":"akashbansal",
+    "email":"a@gma.com",
+    "user":"22_sdd",
     "pass":"Password"
 }
+
+
+
 
 ###
 GET http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "user":"Akassh",
+    "user":"Akash",
     "pass":"Password"
 }
 
-###
 
+
+
+###
 GET http://localhost:5000/logout
 Content-Type: application/json
 
 {
     "user":"Akassh"
 }
+
+
+
+
 ###
 GET http://localhost:5000/users
+
+
+###
+GET http://localhost:5000/delete
+Content-Type: application/json
+
+{
+    "user":"Akash",
+    "pass":"Password"
+}
