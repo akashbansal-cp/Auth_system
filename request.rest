@@ -26,13 +26,22 @@ Content-Type: application/json
 }
 
 
+###
+GET http://localhost:5000/checkStatus
+Content-Type: application/json
+
+{
+    "sessid" : "afd1292a38e965e99726518sc26fd76e1c04fa6fe77ad2f96f4"
+}
+
 
 ###
 GET http://localhost:5000/logout
 Content-Type: application/json
 
 {
-    "user":"username"
+    "user":"username",
+    "sessID":"a0d57934006997664ef795b1c915d761dc3861d35d10b5188c"
 }
 
 
@@ -40,6 +49,11 @@ Content-Type: application/json
 
 ###
 GET http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "secret_key":"__SEC_RET__KE_Y"
+}
 
 
 ###
@@ -47,6 +61,6 @@ GET http://localhost:5000/delete
 Content-Type: application/json
 
 {
-    "user":"username",
+    "user":"username1",
     "pass":"Password"
 }
